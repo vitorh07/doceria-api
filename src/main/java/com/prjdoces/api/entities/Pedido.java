@@ -1,4 +1,4 @@
-package com.prjdoces.entities;
+package com.prjdoces.api.entities;
 
 import java.sql.Date;
 

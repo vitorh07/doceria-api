@@ -1,8 +1,8 @@
-package com.prjdoces.services;
+package com.prjdoces.api.services;
 
 import org.springframework.stereotype.Service;
 
-import com.prjdoces.repositories.FeedbackRepository;
+import com.prjdoces.api.repositories.FeedbackRepository;
 
 @Service
 public class FeedbackService {

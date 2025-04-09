@@ -1,8 +1,8 @@
-package com.prjdoces.repositories;
+package com.prjdoces.api.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.prjdoces.entities.Endereco;
+import com.prjdoces.api.entities.Endereco;
 
 public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
     

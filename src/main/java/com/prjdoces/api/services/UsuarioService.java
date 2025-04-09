@@ -1,11 +1,11 @@
-package com.prjdoces.services;
+package com.prjdoces.api.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.prjdoces.entities.Usuario;
-import com.prjdoces.repositories.UsuarioRepository;
+import com.prjdoces.api.entities.Usuario;
+import com.prjdoces.api.repositories.UsuarioRepository;
 
 @Service
 public class UsuarioService {

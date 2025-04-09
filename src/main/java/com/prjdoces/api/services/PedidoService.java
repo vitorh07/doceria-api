@@ -1,8 +1,8 @@
-package com.prjdoces.services;
+package com.prjdoces.api.services;
 
 import org.springframework.stereotype.Service;
 
-import com.prjdoces.repositories.PedidoRepository;
+import com.prjdoces.api.repositories.PedidoRepository;
 
 @Service
 public class PedidoService {

@@ -1,8 +1,8 @@
-package com.prjdoces.repositories;
+package com.prjdoces.api.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.prjdoces.entities.Tipos;
+import com.prjdoces.api.entities.Tipos;
 
 public interface TiposRepository extends JpaRepository<Tipos, Long>{
     
