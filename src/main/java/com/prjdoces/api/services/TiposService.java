@@ -2,6 +2,7 @@ package com.prjdoces.api.services;
 
 import org.springframework.stereotype.Service;
 
+import com.prjdoces.api.entities.Tipos;
 import com.prjdoces.api.repositories.TiposRepository;
 
 @Service
@@ -11,5 +12,14 @@ public class TiposService {
 
     public TiposService(TiposRepository tiposRepository) {
         this.tiposRepository = tiposRepository;
+    }
+
+    // Métodos
+    public void deleteTipo(Long id) {
+        tiposRepository.deleteById(id);
+    }
+
+    public Tipos saveTipo(Tipos tipo) {
+        return tiposRepository.save(tipo);
     }
 }

@@ -28,7 +28,7 @@ public class Feedback {
 
     @OneToOne
     @JoinColumn(name = "id_usuario")
-    private Usuario id_usuario;
+    private Usuario usuario;
 
     @OneToOne
     @JoinColumn(name = "id_pedido")

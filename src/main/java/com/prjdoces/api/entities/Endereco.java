@@ -33,5 +33,5 @@ public class Endereco {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    private Usuario id_usuario;
+    private Usuario usuario;
 }

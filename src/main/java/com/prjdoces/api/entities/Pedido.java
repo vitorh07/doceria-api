@@ -31,7 +31,7 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    private Usuario id_usuario;
+    private Usuario usuario;
 
     private int quantidade;
     private double valor_total;
