@@ -1,5 +1,7 @@
 package com.prjdoces.api.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.prjdoces.api.entities.Tipos;
@@ -21,5 +23,9 @@ public class TiposService {
 
     public Tipos saveTipo(Tipos tipo) {
         return tiposRepository.save(tipo);
+    }
+
+    public List<Tipos> getAllTipos() {
+        return tiposRepository.findAll();
     }
 }
