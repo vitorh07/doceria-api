@@ -31,14 +31,6 @@ public class Usuario {
     private String senha;
     private String cpf;
 
-    @ManyToOne
-    @JoinColumn(name = "id_telefone")
-    private Telefone telefone;
-
-    @ManyToOne
-    @JoinColumn(name = "id_endereco")
-    private Endereco endereco;
-
     @OneToOne
     @JoinColumn(name = "id_tipo")
     private Tipos id_tipo;

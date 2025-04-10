@@ -1,5 +1,8 @@
 package com.prjdoces.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,4 +37,10 @@ public class Endereco {
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
+
+    @JsonCreator
+    public Endereco(@JsonProperty("id_usuario") Long id_usuario) {
+        this.usuario = new Usuario();
+        this.usuario.setId_usuario(id_usuario);
+    }
 }

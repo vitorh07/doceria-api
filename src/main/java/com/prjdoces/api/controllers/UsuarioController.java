@@ -23,7 +23,7 @@ import com.prjdoces.api.services.UsuarioService;
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
-    
+
     private final UsuarioService usuarioService;
     private final PasswordEncoder passwordEncoder;
 
@@ -34,25 +34,25 @@ public class UsuarioController {
 
     // Criar
     @PostMapping("/register")
-public ResponseEntity<?> register(@RequestBody Map<String, String> request) {
-    Usuario usuario = new Usuario();
+    public ResponseEntity<?> register(@RequestBody Map<String, String> request) {
+        Usuario usuario = new Usuario();
 
-    // Preenchendo os atributos do usuário
-    usuario.setUsername(request.get("username"));
-    usuario.setSenha(passwordEncoder.encode(request.get("senha")));
-    usuario.setEmail(request.get("email"));
-    usuario.setNome(request.get("nome"));
-    usuario.setCpf(request.get("cpf"));
+        // Preenchendo os atributos do usuário
+        usuario.setUsername(request.get("username"));
+        usuario.setSenha(passwordEncoder.encode(request.get("senha")));
+        usuario.setEmail(request.get("email"));
+        usuario.setNome(request.get("nome"));
+        usuario.setCpf(request.get("cpf"));
 
-    // Relacionamento com o tipo de usuário
-    if (request.get("id_tipo") != null) {
-        Long idTipo = Long.parseLong(request.get("id_tipo"));
-        usuario.setId_tipo(usuarioService.getTipoById(idTipo)); 
+        // Relacionamento com o tipo de usuário
+        if (request.get("id_tipo") != null) {
+            Long idTipo = Long.parseLong(request.get("id_tipo"));
+            usuario.setId_tipo(usuarioService.getTipoById(idTipo));
+        }
+
+        Usuario savedUsuario = usuarioService.saveUsuario(usuario);
+        return ResponseEntity.ok(savedUsuario);
     }
-
-    Usuario savedUsuario = usuarioService.saveUsuario(usuario);
-    return ResponseEntity.ok(savedUsuario);
-}
 
     // Deletar
     @DeleteMapping("/id/{id}")
@@ -92,7 +92,7 @@ public ResponseEntity<?> register(@RequestBody Map<String, String> request) {
         if (usuario != null && passwordEncoder.matches(loginRequest.getSenha(), usuario.getSenha())) {
             String token = JwtUtil.generateToken(usuario.getUsername());
             Map<String, String> response = new HashMap<>();
-            response.put("token", token); 
+            response.put("token", token);
             return ResponseEntity.ok(response);
         }
         return ResponseEntity.status(401).body(null);
