@@ -1,6 +1,7 @@
 package com.prjdoces.api.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -30,7 +31,7 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_pedido;
-    
+
     private String status;
     private LocalDateTime data_pedido;
 
@@ -42,18 +43,27 @@ public class Pedido {
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
 
-    @OneToMany(mappedBy = "pedido")
-    private List<ItemPedido> itens;
+    // Remova o 'mappedBy' e use 'JoinColumn' diretamente na tabela 'ItemPedido'
+    @OneToMany
+    @JoinColumn(name = "id_pedido")  // Agora ItemPedido vai ter o campo 'id_pedido' como chave estrangeira
+    private List<ItemPedido> itens = new ArrayList<>(); // Inicializando a lista para evitar NullPointerException
 
     @JsonCreator
     public Pedido(
-        @JsonProperty("id_usuario") Long id_usuario, 
-        @JsonProperty("id_endereco") Long id_endereco) {
-        
+            @JsonProperty("id_usuario") Long id_usuario,
+            @JsonProperty("id_endereco") Long id_endereco) {
+
         this.usuario = new Usuario();
         this.usuario.setId_usuario(id_usuario);
 
         this.endereco = new Endereco();
         this.endereco.setId_endereco(id_endereco);
+
+        // Inicializando a lista de itens
+        this.itens = new ArrayList<>();
+
+        // Preenchendo data e status
+        this.data_pedido = LocalDateTime.now(); // data atual
+        this.status = "Pendente"; // Definindo o status como "Pendente" por padrão
     }
 }

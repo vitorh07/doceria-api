@@ -11,28 +11,29 @@ import com.prjdoces.api.repositories.PedidoRepository;
 @Service
 public class PedidoService {
     private final PedidoRepository pedidoRepository;
+
     public PedidoService(PedidoRepository pedidoRepository) {
         this.pedidoRepository = pedidoRepository;
     }
 
     // Métodos
-    public Pedido savePedido(Pedido pedido){
+    public Pedido savePedido(Pedido pedido) {
         return pedidoRepository.save(pedido);
     }
 
-    public List<Pedido> getAllPedidos(){
+    public List<Pedido> getAllPedidos() {
         return pedidoRepository.findAll();
     }
 
-    public Pedido getPedidoById(Long id){
+    public Pedido getPedidoById(Long id) {
         return pedidoRepository.findById(id).orElse(null);
     }
 
-    public List<Pedido> getPedidoByUsuario(Usuario usuario){
+    public List<Pedido> getPedidoByUsuario(Usuario usuario) {
         return pedidoRepository.findByUsuario(usuario);
     }
-    
-    public void deletePedido(Long id){
+
+    public void deletePedido(Long id) {
         pedidoRepository.deleteById(id);
     }
 }
